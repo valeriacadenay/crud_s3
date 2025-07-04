@@ -1,107 +1,64 @@
 {
   "product": [
     {
-      "id": "5cb7",
-      "nombre": "juan",
+      "id": "4fd2",
+      "nombre": "silla",
       "marca": "rimax",
-      "modelo": "86",
-      "vencimiento": "2025-07-18",
-      "fabricante": "lol",
-      "garantia": "5",
+      "modelo": "000009",
+      "vencimiento": "2025-07-15",
+      "fabricante": "rimax",
+      "garantia": "4",
       "origen": "colombia"
     },
     {
-      "id": "4834",
-      "nombre": "juan",
+      "id": "4e5f",
+      "nombre": "silla",
       "marca": "rimax",
-      "modelo": "86",
-      "vencimiento": "2025-07-18",
-      "fabricante": "lol",
-      "garantia": "5",
+      "modelo": "000009",
+      "vencimiento": "2025-07-15",
+      "fabricante": "rimax",
+      "garantia": "4",
       "origen": "colombia"
     },
     {
-      "id": "e94c",
-      "nombre": "juan",
+      "id": "a6f5",
+      "nombre": "lol",
       "marca": "rimax",
-      "modelo": "86",
-      "vencimiento": "2025-07-18",
-      "fabricante": "lol",
-      "garantia": "5",
+      "modelo": "000009",
+      "vencimiento": "2025-07-15",
+      "fabricante": "rimax",
+      "garantia": "4",
       "origen": "colombia"
     },
     {
-      "id": "b205",
-      "nombre": "juan",
+      "id": "0fec",
+      "nombre": "ola",
       "marca": "rimax",
-      "modelo": "86",
-      "vencimiento": "2025-07-18",
-      "fabricante": "lol",
-      "garantia": "5",
-      "origen": "colombia"
-    },
-    {
-      "id": "c072",
-      "nombre": "Silla",
-      "marca": "rimax",
-      "modelo": "86",
+      "modelo": "000009",
       "vencimiento": "2025-07-11",
       "fabricante": "rimax",
-      "garantia": "25",
+      "garantia": "2",
       "origen": "colombia"
     },
     {
-      "id": "8088",
-      "nombre": "Silla",
-      "marca": "rimax",
-      "modelo": "86",
-      "vencimiento": "2025-07-11",
-      "fabricante": "rimax",
-      "garantia": "25",
-      "origen": "colombia"
+      "id": "8640",
+      "nombre": "",
+      "marca": "",
+      "modelo": "",
+      "vencimiento": "",
+      "fabricante": "",
+      "garantia": "",
+      "origen": ""
     },
     {
-      "id": "6fb0",
-      "nombre": "juan",
-      "marca": "rimax",
-      "modelo": "86",
-      "vencimiento": "2025-07-05",
-      "fabricante": "8",
-      "garantia": "8",
-      "origen": "colombia"
-    },
-    {
-      "id": "3436",
-      "nombre": "juan",
-      "marca": "rimax",
-      "modelo": "86",
-      "vencimiento": "2025-07-05",
-      "fabricante": "8",
-      "garantia": "8",
-      "origen": "colombia"
-    },
-    {
-      "id": "a5ae",
-      "nombre": "Silla",
-      "marca": "rimax",
-      "modelo": "86",
-      "vencimiento": "2025-07-03",
-      "fabricante": "lol",
-      "garantia": "8",
-      "origen": "colombia"
-    },
-    {
-      "id": "9a8e"
-    },
-    {
-      "id": "40e3",
-      "nombre": "Silla",
-      "marca": "rimax",
-      "modelo": "86",
-      "vencimiento": "2025-07-03",
-      "fabricante": "lol",
-      "garantia": "8",
-      "origen": "colombia"
+      "id": "83a1",
+      "nombre": "",
+      "marca": "",
+      "modelo": "",
+      "vencimiento": "",
+      "fabricante": "",
+      "garantia": "",
+      "origen": ""
     }
   ]
 }

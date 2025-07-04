@@ -6,7 +6,6 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta name="description" content="This is a simple CRUD (Create, Read, Update, Delete) project for product management in pure JavaScript, with responsive CSS styles and notifications using SweetAlert2.">
 
@@ -51,7 +50,6 @@
   <main>
 
     <!-- Container to display the list of products -->
-    <div id="productos-lista"></div>
      <form id="form">
 
     <!-- Section for adding a new product -->
@@ -87,7 +85,9 @@
       <input type="text" placeholder="origen" id="origen">
       <br>
 
-      <button id="button"> Guardar </button>
+      <button type="submit" id="button">Guardar</button>
+      <button id="editar-btn">Editar</button>
+      <button id="eliminar-btn">Eliminar</button>
     </section>
     </form>
 
