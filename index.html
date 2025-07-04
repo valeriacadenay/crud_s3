@@ -1,109 +1,89 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
-  <!-- Metadata settings -->
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta name="description" content="This is a simple CRUD (Create, Read, Update, Delete) project for product management in pure JavaScript, with responsive CSS styles and notifications using SweetAlert2.">
+  <meta name="description" content="This is a simple CRUD (Create, Read, Update, Delete) project for product management in pure JavaScript, with responsive CSS styles and notifications using SweetAlert2." />
+  <meta name="keywords" content="Crud, productos, product management, APIs" />
+  <meta name="sitedomain" content="gestion de datos" />
+  <meta name="organization" content="Valeria Cadena Yance" />
+  <meta name="author" content="Valeria Cadena Yance" />
+  <meta name="designer" content="Valeria Cadena Yance" />
+  <meta name="copyright" content="© 2025 valeriacadenay. All rights reserved" />
+  <meta name="robots" content="index,follow" />
+  <meta name="googlebot" content="index,follow" />
+  <meta name="revisit-after" content="15days" />
 
-  <meta name="keywords" content="Crud, productos, product management, APIs">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Signika+Negative:wght@300..700&display=swap"
+    rel="stylesheet" />
 
-  <meta name="sitedomain" content="gestion de datos">
+  <!-- Hoja de estilos -->
+  <link rel="stylesheet" href="./src/css/style.css" />
 
-  <meta name="organization" content="Valeria Cadena Yance">
-
-  <meta name="author" content="Valeria Cadena Yance">
-
-  <meta name="designer" content="Valeria Cadena Yance">
-
-  <meta name="copyright" content="© 2025 valeriacadenay. All rights reserved">
-
-  <meta name="robots" content="index,follow">
-
-  <meta name="googlebot" content="index,follow">
-
-  <meta name="revisit-after" content="15days">
-
-  <!-- Google Fonts preconnection -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Signika+Negative:wght@300..700&display=swap"
-    rel="stylesheet">
-
-  <!-- External CSS stylesheet -->
-  <link rel="stylesheet" href="./src/css/styles.css">
-  <!-- Page title -->
-  <title>Gestion de productos</title>
+  <title>Gestión de productos</title>
 </head>
 
 <body>
-
-  <!-- Page header -->
   <header>
-    <h1>Gestion de Productos</h1>
+    <h1>Gestión de Productos</h1>
   </header>
 
-  <!-- Main content -->
   <main>
+    <form id="form">
+      <section id="agregar-producto">
+        <h2>Agregar producto</h2>
 
-    <!-- Container to display the list of products -->
-     <form id="form">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required />
+        <br />
 
-    <!-- Section for adding a new product -->
-    <section id="agregar-producto">
-      <h2>Agregar producto</h2>
+        <label for="marca">Marca</label>
+        <input type="text" id="marca" name="marca" required />
+        <br />
 
-       <!-- Products input -->
-      <label>Nombre</label>
-      <input type="text" id="nombre">
-      <br>
+        <label for="modelo">Modelo</label>
+        <input type="text" id="modelo" name="modelo" required />
+        <br />
 
-      <label for="marca">Marca</label>
-      <input type="text" placeholder="marca" id="marca">
-      <br>
+        <label for="vencimiento">Vencimiento</label>
+        <input type="date" id="vencimiento" name="vencimiento" required />
+        <br />
 
-      <label for="modelo">Modelo</label>
-      <input type="text" placeholder="modelo" id="modelo">
-      <br>
+        <label for="fabricante">Fabricante</label>
+        <input type="text" id="fabricante" name="fabricante" required />
+        <br />
 
-      <label for="vencimiento">Vencimiento</label>
-      <input type="date" placeholder="vencimiento" id="vencimiento">
-      <br>
+        <label for="garantia">Meses de garantía</label>
+        <input type="number" id="garantia" name="garantia" min="0" required />
+        <br />
 
-      <label for="fabricante">Fabricante</label>
-      <input type="text" placeholder="fabricante" id="fabricante">
-      <br>
+        <label for="origen">País de origen</label>
+        <input type="text" id="origen" name="origen" required />
+        <br />
 
-      <label for="garantia">Meses de garantia</label>
-      <input type="number" placeholder="garantia" id="garantia">
-      <br>
-
-      <label for="origen">Pais de origen</label>
-      <input type="text" placeholder="origen" id="origen">
-      <br>
-
-      <button type="submit" id="button">Guardar</button>
-      <button id="editar-btn">Editar</button>
-      <button id="eliminar-btn">Eliminar</button>
-    </section>
+        <button type="submit" id="button">Guardar</button>
+      </section>
     </form>
 
-    <div class="blogs">
-      
-    </div>
-
+    <div id="productos-lista"></div>
   </main>
-  <!-- Footer -->
+
   <footer>
-    <p>© 2025 valeriacadenay. All rights reserved</p>
+    <p>© 2025 valeriacadenay. Todos los derechos reservados</p>
   </footer>
-   <!--Import SweetAlert2 script for alerts -->
+
+  <!-- SweetAlert2 para alertas -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <!-- JavaScript module for CRUD functionality -->
+  <!-- Script principal -->
   <script type="module" src="src/js/main.js"></script>
 </body>
 
 </html>
+

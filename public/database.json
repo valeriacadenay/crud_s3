@@ -1,14 +1,3 @@
 {
-  "product": [
-    {
-      "id": "06ee",
-      "nombre": "",
-      "marca": "silla",
-      "modelo": "rimax",
-      "vencimiento": "2025-07-09",
-      "fabricante": "rimax",
-      "garantia": "8",
-      "origen": "colombia"
-    }
-  ]
+  "product": []
 }
