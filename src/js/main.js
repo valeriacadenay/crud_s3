@@ -2,7 +2,7 @@ import { alertError, alertSuccess, confirmarEliminacion } from "./alert.js";
 
 const API_URL = "http://localhost:3000/product";
 
-// Inputs del formulario
+// Form input elements
 const $nombre = document.getElementById("nombre");
 const $marca = document.getElementById("marca");
 const $modelo = document.getElementById("modelo");
@@ -11,59 +11,85 @@ const $fabricante = document.getElementById("fabricante");
 const $garantia = document.getElementById("garantia");
 const $origen = document.getElementById("origen");
 
-// Elementos del DOM
+// DOM elements
 const form = document.getElementById("form");
 const productosLista = document.getElementById("productos-lista");
-const btnGuardar = document.getElementById("button"); // Mover aquí para evitar referencias antes de declararlo
+const btnGuardar = document.getElementById("button"); // Placed here to avoid reference before declaration
 
-// Función para obtener productos del servidor
+// Fetch products from the server and display them
 async function cargarProductos() {
   try {
     const respuesta = await fetch(API_URL);
-    if (!respuesta.ok) throw new Error("Error al obtener productos");
+    if (!respuesta.ok) throw new Error("Error fetching products");
     const productos = await respuesta.json();
     mostrarProductos(productos);
   } catch (error) {
     console.error(error);
-    alertError("No se pudieron cargar los productos");
+    alertError("Could not load products");
   }
 }
 
-// Función para mostrar productos en el DOM
+// Render products as a table in the DOM
 function mostrarProductos(productos) {
   if (!productos || productos.length === 0) {
-    productosLista.innerHTML = "<p>No hay productos aún.</p>";
+    productosLista.innerHTML = "<p>No products yet.</p>";
     return;
   }
 
-  productosLista.innerHTML = productos
-    .map(
-      (producto) => `
-    <div class="producto">
-      <h3>${producto.nombre}</h3>
-      <p>Marca: ${producto.marca}</p>
-      <p>Modelo: ${producto.modelo}</p>
-      <p>Vence: ${producto.vencimiento}</p>
-      <p>Fabricante: ${producto.fabricante}</p>
-      <p>Garantía: ${producto.garantia} meses</p>
-      <p>Origen: ${producto.origen}</p>
-      <button class="btn-eliminar" data-id="${producto.id}">Eliminar</button>
-      <button class="btn-editar" data-id="${producto.id}">Editar</button>
+  let tableHTML = `
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Expiration</th>
+            <th>Manufacturer</th>
+            <th>Warranty (months)</th>
+            <th>Origin</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+  `;
+
+  productos.forEach((producto) => {
+    tableHTML += `
+      <tr>
+        <td>${producto.nombre}</td>
+        <td>${producto.marca}</td>
+        <td>${producto.modelo}</td>
+        <td>${producto.vencimiento}</td>
+        <td>${producto.fabricante}</td>
+        <td>${producto.garantia}</td>
+        <td>${producto.origen}</td>
+        <td class="table-actions">
+          <button class="btn-editar" data-id="${producto.id}">Edit</button>
+          <button class="btn-eliminar" data-id="${producto.id}">Delete</button>
+        </td>
+      </tr>
+    `;
+  });
+
+  tableHTML += `
+        </tbody>
+      </table>
     </div>
-  `
-    )
-    .join("");
+  `;
+
+  productosLista.innerHTML = tableHTML;
 }
 
-// Función para limpiar inputs del formulario
+// Reset the form inputs and editing state
 function limpiarFormulario() {
   form.reset();
-  // También quitar id de edición y restaurar botón por si queda activo
+  // Also remove editing id and restore button text if needed
   delete form.dataset.editingId;
   btnGuardar.textContent = "Guardar";
 }
 
-// Función para crear un nuevo producto
+// Create a new product from form data
 async function crearProducto() {
   const nuevoProducto = {
     nombre: $nombre.value.trim(),
@@ -75,7 +101,7 @@ async function crearProducto() {
     origen: $origen.value.trim(),
   };
 
-  // Validar que no haya campos vacíos
+  // Validate that all fields are filled
   if (
     !nuevoProducto.nombre ||
     !nuevoProducto.marca ||
@@ -85,7 +111,7 @@ async function crearProducto() {
     !nuevoProducto.garantia ||
     !nuevoProducto.origen
   ) {
-    alertError("Por favor, completa todos los campos.");
+    alertError("Please complete all fields.");
     return;
   }
 
@@ -98,15 +124,15 @@ async function crearProducto() {
 
     if (!respuesta.ok) throw new Error();
 
-    alertSuccess("Producto guardado exitosamente");
+    alertSuccess("Product saved successfully");
     limpiarFormulario();
     cargarProductos();
   } catch {
-    alertError("Error al guardar el producto");
+    alertError("Error saving product");
   }
 }
 
-// Función para eliminar producto
+// Delete a product by id
 async function eliminarProducto(id) {
   try {
     const confirmado = await confirmarEliminacion();
@@ -115,22 +141,22 @@ async function eliminarProducto(id) {
       const respuesta = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
       if (!respuesta.ok) throw new Error();
 
-      alertSuccess("Producto eliminado exitosamente");
+      alertSuccess("Product deleted successfully");
       cargarProductos();
     }
   } catch {
-    alertError("No se pudo eliminar el producto");
+    alertError("Could not delete product");
   }
 }
 
-// Función para obtener datos del producto a editar y mostrar en el formulario
+// Load product data into the form for editing
 async function editarProducto(id) {
   try {
     const respuesta = await fetch(`${API_URL}/${id}`);
     if (!respuesta.ok) throw new Error();
     const producto = await respuesta.json();
 
-    // Llenar formulario con datos actuales para editar
+    // Fill form with current product data for editing
     $nombre.value = producto.nombre;
     $marca.value = producto.marca;
     $modelo.value = producto.modelo;
@@ -139,17 +165,17 @@ async function editarProducto(id) {
     $garantia.value = producto.garantia;
     $origen.value = producto.origen;
 
-    // Cambiar botón para indicar modo edición
+    // Change button to indicate edit mode
     btnGuardar.textContent = "Actualizar";
 
-    // Guardar id en el formulario para usarlo luego
+    // Store id in the form for later use
     form.dataset.editingId = id;
   } catch {
-    alertError("No se pudo cargar el producto para editar");
+    alertError("Could not load product for editing");
   }
 }
 
-// Función para actualizar producto con datos del formulario
+// Update a product with form data
 async function actualizarProducto(id) {
   const productoActualizado = {
     nombre: $nombre.value.trim(),
@@ -161,6 +187,7 @@ async function actualizarProducto(id) {
     origen: $origen.value.trim(),
   };
 
+  // Validate that all fields are filled
   if (
     !productoActualizado.nombre ||
     !productoActualizado.marca ||
@@ -170,7 +197,7 @@ async function actualizarProducto(id) {
     !productoActualizado.garantia ||
     !productoActualizado.origen
   ) {
-    alertError("Por favor, completa todos los campos.");
+    alertError("Please complete all fields.");
     return;
   }
 
@@ -183,15 +210,15 @@ async function actualizarProducto(id) {
 
     if (!respuesta.ok) throw new Error();
 
-    alertSuccess("Producto actualizado exitosamente");
+    alertSuccess("Product updated successfully");
     limpiarFormulario();
     cargarProductos();
   } catch {
-    alertError("No se pudo actualizar el producto");
+    alertError("Could not update product");
   }
 }
 
-// Evento submit del formulario
+// Handle form submit event for create or update
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -204,7 +231,7 @@ form.addEventListener("submit", (e) => {
   }
 });
 
-// Delegación de eventos para botones eliminar y editar
+// Event delegation for edit and delete buttons
 productosLista.addEventListener("click", (e) => {
   const boton = e.target;
   const id = boton.dataset.id;
@@ -218,8 +245,5 @@ productosLista.addEventListener("click", (e) => {
   }
 });
 
-// Cargar productos al inicio
+// Load products on page load
 window.addEventListener("DOMContentLoaded", cargarProductos);
-
-
-

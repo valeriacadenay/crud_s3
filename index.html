@@ -6,6 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- SEO and meta information -->
   <meta name="description" content="This is a simple CRUD (Create, Read, Update, Delete) project for product management in pure JavaScript, with responsive CSS styles and notifications using SweetAlert2." />
   <meta name="keywords" content="Crud, productos, product management, APIs" />
   <meta name="sitedomain" content="gestion de datos" />
@@ -18,15 +19,13 @@
   <meta name="revisit-after" content="15days" />
 
   <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Signika+Negative:wght@300..700&display=swap"
-    rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nova+Round&display=swap" rel="stylesheet">
 
-  <!-- Hoja de estilos -->
+  <!-- Main CSS file -->
   <link rel="stylesheet" href="./src/css/style.css" />
-
+  
   <title>Gestión de productos</title>
 </head>
 
@@ -36,6 +35,7 @@
   </header>
 
   <main>
+    <!-- Product add form -->
     <form id="form">
       <section id="agregar-producto">
         <h2>Agregar producto</h2>
@@ -72,16 +72,19 @@
       </section>
     </form>
 
-    <div id="productos-lista"></div>
+    <!-- Product list table -->
+    <div id="productos-lista">
+      <p>Cargando productos...</p>
+    </div>
   </main>
 
   <footer>
     <p>© 2025 valeriacadenay. Todos los derechos reservados</p>
   </footer>
 
-  <!-- SweetAlert2 para alertas -->
+  <!-- SweetAlert2 library -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <!-- Script principal -->
+  <!-- Main JavaScript file -->
   <script type="module" src="src/js/main.js"></script>
 </body>
 
