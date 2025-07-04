@@ -25,6 +25,7 @@ async function getProductos(){
     let response = await fetch(endpointProduct)
     let data = await response.json()
     console.table(data)
+    return data;
 }
 
 async function createProducts(){
@@ -57,12 +58,10 @@ async function createProducts(){
     }
 }
 
-getProductos();
+
 
 const renderPosts = async () =>{
-    let uri = endpointProduct;
-    const res = await fetch(uri);
-    const post = await res.json();
+    const posts = await getProductos();
     
     let template = "";
     posts.forEach(post => {
